@@ -35,9 +35,15 @@ var User = sequelize.define('user', {
 });
 
 
-//User.sync();
+User.sync();
 
+/*****
+***DANGER: THIS WILL DROP THE USER TABLE***
 User.sync({ force: true }); 
+******/
+
+
+
 
 app.use(bodyParser.json());
 
