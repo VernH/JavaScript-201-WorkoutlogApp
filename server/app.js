@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.use(require('./middleware/headers'));
 
-
+//app.use('/api/login', require('./routes/session'));
 app.use('/api/user', require('./routes/user'));
 
 app.use('/api/test', function(req, res){
@@ -23,9 +23,4 @@ app.use('/api/test', function(req, res){
 app.listen(3000, function(){
 	console.log('App is listening on 3000.')
 });
-
-
-app.use(bodyParser.json());
-
-
 
