@@ -1,6 +1,13 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var sequelize = require('./db');
+var User = sequelize.import('./models/user');
+//Create table
+//User.sync(); // sync( {force: true}), to drop then create each time the app starts!
+
+
+sequelize.sync(); //To reset the table sync({ force: true })
 
 app.use(require('./middleware/headers'));
 
@@ -12,32 +19,6 @@ app.listen(3000, function(){
 	console.log('App is listening on 3000.')
 });
 
-
-var Sequelize = require('sequelize');
-var sequelize = new Sequelize('workoutlog', 'postgres', 'Letmein1234!', {
-	host: 'localhost',
-	dialect: 'postgres'
-});
-
-sequelize.authenticate().then(
-	function() {
-		console.log('connected to workoutlog postgres db');
-	},
-	function(err){
-		console.log(err);
-	}
-);
-
-
-var User = sequelize.define('user', {
-	username: Sequelize.STRING,
-	passwordhash: Sequelize.STRING,
-});
-
-
-//User.sync();
-
-User.sync({ force: true }); 
 
 app.use(bodyParser.json());
 
