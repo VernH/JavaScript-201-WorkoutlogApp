@@ -33,29 +33,20 @@ router.post('/', function(req, res) {
 	    );
 });
 
+router.get('/', function(req, res) {
+	var userid = req.user.id;
+	Log
+	.findAll({
+		where: { owner: userid }
+	})
+	.then(
+		function findAllSuccess(data) {
+			// console.log(data);
+			res.json(data);
+		},
+		function findAllError(err) {
+			res.send(500, err.message);
+		}
+	);
+});
 module.exports = router;
-
-
-/* 
-	test this in Postman (chrome extension) http://localhost:3000/api/user
-	
-	using the following in the body as "raw" "application/json"
-	{
-	    "user":{
-	    "username":"frodobaggins",
-	    "password":"password!!!"}
-	}
-
-	expected response:
-
-	{
-  "user": {
-    "id": 1,
-    "username": "frodobaggins",
-    "passwordhash": "",
-    "updatedAt": "2016-06-06T17:34:51.724Z",
-    "createdAt": "2016-06-06T17:34:51.724Z"
-  },
-  "message": "created"
-}
-*/

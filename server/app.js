@@ -5,11 +5,14 @@ var app = express();
 var bodyParser = require('body-parser');
 var sequelize = require('./db');
 
-var User = sequelize.import('./models/user');
+// var User = sequelize.import('./models/user');
+// var Log = sequelize.import('./models/log');
 
-//Create table
-User.sync(); // sync( {force: true}), to drop then create each time the app starts!
 
+// setKeys
+// User.hasMany(Log, {foreignKey: "owner"});
+// Log.belongsTo(User, {foreignKey: "owner"});
+sequelize.sync(); // tip: {force: true} for resetting tables
 app.use(bodyParser.json());
 
 app.use(require('./middleware/headers'));
