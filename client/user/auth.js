@@ -30,47 +30,47 @@ $(function() {
 
       //login
 
-     //  login: function() {
-   		// var username = $("#li_username").val();
-   		// var password = $("#li_password").val();
-   		// var user = {user:  {username: username, password: password }};
-   		// var login = $.ajax({
-   		// 	type: "POST", 
-   		// 	url: WorkoutLog.API_BASE + "login", 
-   		// 	data: JSON.stringify(user), 
-   		// 	contentType: "application/json"
-   		// });
-   		// login.done(function(data) {
-   		// 	if (data.sessionToken) {
-     //           WorkoutLog.setAuthHeader(data.sessionToken);
+      login: function() {
+   		var username = $("#li_username").val();
+   		var password = $("#li_password").val();
+   		var user = {user:  {username: username, password: password }};
+   		var login = $.ajax({
+   			type: "POST", 
+   			url: WorkoutLog.API_BASE + "login", 
+   			data: JSON.stringify(user), 
+   			contentType: "application/json"
+   		});
+   		login.done(function(data) {
+   			if (data.sessionToken) {
+               WorkoutLog.setAuthHeader(data.sessionToken);
                
-   		// 	}
-   		// 	// TODO: add logic to set user and auth token	
-   		// 	$("#login-modal").modal("hide");
-   		// 	$(".disabled").removeClass("disabled");
-   		// 	$("#loginout").text("Logout");
-   		// })
-   		// .fail(function() {
-   		// 	$("#li_error").text("There was an issue with your username or password").show();
-     //  		});
-     //  },
+   			}
+   			// TODO: add logic to set user and auth token	
+   			$("#login-modal").modal("hide");
+   			$(".disabled").removeClass("disabled");
+   			$("#loginout").text("Logout");
+   		})
+   		.fail(function() {
+   			$("#li_error").text("There was an issue with your username or password").show();
+      		});
+      },
 
       //logout
-      // loginout: function() {
-      //    if (window.localStorage.getItem("sessionToken")) {
-      //       window.localStorage.removeItem("sessionToken");
-      //       $("#loginout").text("Login");
-      //    }
-      // }
+      loginout: function() {
+         if (window.localStorage.getItem("sessionToken")) {
+            window.localStorage.removeItem("sessionToken");
+            $("#loginout").text("Login");
+         }
+      }
    });
 
    // bind events
-  // $("#login").on("click", WorkoutLog.login);
-   $("#signup").on("click", WorkoutLog.signup);
- //  $("#loginout").on("click", WorkoutLog.loginout);
+  	$("#login").on("click", WorkoutLog.login);
+    $("#signup").on("click", WorkoutLog.signup);
+ 	$("#loginout").on("click", WorkoutLog.loginout);
 
-   // if (window.localStorage.getItem("sessionToken")) {
-   //    $("#loginout").text("Logout");
-   // }
+   if (window.localStorage.getItem("sessionToken")) {
+      $("#loginout").text("Logout");
+   }
 
 });
