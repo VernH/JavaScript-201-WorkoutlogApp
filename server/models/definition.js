@@ -8,13 +8,3 @@ module.exports = function(sequelize, DataTypes) {
 	});
 };
 
-
-/*
-POSTMAN TEST:
-{
-	"definition":{
-		"description":"Running my heart out as fast I could for 70 miles.",
-		"logType":"sprints"
-	}
-}
-*/
