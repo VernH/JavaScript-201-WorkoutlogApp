@@ -2,30 +2,27 @@ var router = require('express').Router();
 var sequelize = require('../db');
 var Log = sequelize.import('../models/log');
 var User = sequelize.import('../models/user');
+var Definition = sequelize.import('../models/definition');
 
 router.post('/', function(req, res) {
     // req has some body properties that have a username and pwd
-    var description = req.body.log.description; // user: { username: 'blah', password: 'boo' }
-    var result = req.body.log.result; // TODO: encrypt/hash this
-    // tobe set as belongsTo var definition
+    var description = req.body.log.description; 
+    var result = req.body.log.result; 
+    var user = req.user;
+    var definition = req.body.log.def;
+   
 
-    // Use our sequlize model to create user
-   Log 
+    // Use our sequelize model to create log
+  	Log 
 	    .create({ 
 	    	description: description,
-	    	result: result
+	    	result: result,
+	    	owner: user.id,
+	    	def: definition
 	    })
 	    .then(
 	    	function createSuccess(log) {
-	    		User.findById(1)
-	    		.then(
-	    			function(user) {
-						log.setUser(user);
-		    		}, 
-		    		function(err) {
-		    			console.log(err);
-		    		}
-		    	);
+	    		res.json(log);
 	    	}, 
 		    function createError(err) {
 		        res.send(500, err.message);
