@@ -21,6 +21,10 @@ $(function() {
                $("#loginout").text("Logout");
                // go to define tab
                $('.nav-tabs a[href="#define"]').tab('show');
+
+               $("#su_username").val("");
+               $("#su_password").val("");
+
             })
             .fail(function() {
                $("#su_error").text("There was an issue with your username").show();
