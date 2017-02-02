@@ -11,7 +11,7 @@ router.post('/', function(req, res) {
 
 		User.create({
 			username: username,
-			passwordhash: ""
+			passwordhash: pass
 		}).then(
 		//Sequelize is going to return the object it created from db.
 
