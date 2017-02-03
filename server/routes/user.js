@@ -9,6 +9,9 @@ router.post('/', function(req, res) {
 		var pass = req.body.user.password;
 		//Need to create a user object and use sequelize to put that user into
 		//
+        console.log(username);
+        console.log(pass);
+
 
 		User.create({
 			username: username,

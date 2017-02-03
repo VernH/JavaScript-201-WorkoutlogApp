@@ -9,6 +9,12 @@ router.post('/', function(req, res) {
         var logType= req.body.definition.type;
         var owner = req.user.id;
 
+		console.log("**********DESCRIPTION**********");
+        console.log(description);
+		console.log("**********LOGTYPE**********");
+        console.log(logType);
+        console.log("**********OWNER**********");
+        console.log(owner);
 	//methods
 	Definition
 	//objects must match the model 
