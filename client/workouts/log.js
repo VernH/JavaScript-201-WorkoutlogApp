@@ -12,6 +12,8 @@ $(function() {
 				}
 				$("#log-definition").children().remove();
 				$("#log-definition").append(opts);
+				$("#update-definition").children().remove();
+				$("#update-definition").append(opts);
 			},
 
 			setHistory: function() {
@@ -19,9 +21,9 @@ $(function() {
 				var len = history.length;
 				var lis = "";
 					for (var i = 0; i < len; i++) {
-					lis += "<li class='list-group-item'>" + 
-					// history[i].id + " - " + 
-					history[i].def + " - " + 
+					lis += "<li class='list-group-item'>" +
+					// history[i].id + " - " +
+					history[i].def + " - " +
 					history[i].result + " " +
 					// pass the log.id into the button's id attribute // watch your quotes!
 					"<div class='pull-right'>" +
@@ -33,7 +35,7 @@ $(function() {
 				$("#history-list").append(lis);
 			},
 			create: function() {
-				var itsLog = { 
+				var itsLog = {
 		        	desc: $("#log-description").val(),
 		         	result: $("#log-result").val(),
 		         	def: $("#log-definition option:selected").text()
@@ -66,7 +68,7 @@ $(function() {
 					contentType: "application/json"
 				});
 				getLog.done(function(data){
-					
+
 				    $('a[href="#update-log"]').tab("show");
 					$('#update-result').val(data.result);
 					$('#update-description').val(data.description);
@@ -77,7 +79,7 @@ $(function() {
 
 			updateWorkout: function() {
 				$("#update").text("Update");
-				var updateLog = { 
+				var updateLog = {
 					id: $('#update-id').val(),
 					desc: $("#update-description").val(),
 						result: $("#update-result").val(),
