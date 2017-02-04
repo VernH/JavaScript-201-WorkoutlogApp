@@ -32,7 +32,7 @@ $(function(){
    // Ensure .disabled aren't clickable
    $(".nav-tabs a[data-toggle=tab]").on("click", function(e) {
       var token = window.localStorage.getItem("sessionToken");
-      console.log("********.nav tabs app.js**********")
+      console.log("********.nav tabs**********")
       console.log(token);
 
 
