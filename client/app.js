@@ -1,31 +1,41 @@
 $(function(){
 
-var WorkoutLog = (function($, undefined) {
-      var API_BASE =  "http://localhost:3000/api/";
-      var userDefinitions = [];
+   var WorkoutLog = (function($, undefined) {
 
-      var setAuthHeader = function(sessionToken) {
-         window.localStorage.setItem("sessionToken", sessionToken);
-         // Set the authorization header
-         // This can be done on individual calls
-         // here we showcase ajaxSetup as a global tool
-         $.ajaxSetup({
-            "headers": {
-               "Authorization": sessionToken
-            }
-         });
-      };
+         //Private
+         var API_BASE =  "http://localhost:3000/api/";
+         var userDefinitions = [];
 
-      // public
-      return {
-         API_BASE: API_BASE,
-         setAuthHeader: setAuthHeader
-      };
-   })(jQuery);
+         var setAuthHeader = function(sessionToken) {
+            window.localStorage.setItem("sessionToken", sessionToken);
+            // Set the authorization header
+            // This can be done on individual calls
+            // here we showcase ajaxSetup as a global tool
+            $.ajaxSetup({
+               "headers": {
+                  "Authorization": sessionToken
+               }
+            });
+         };
+
+         // Public
+         return {
+            API_BASE: API_BASE,
+            setAuthHeader: setAuthHeader
+         };
+      })(jQuery);
+
+      //IIFE - Immediately Invoked Function Expression
+
+
 
    // Ensure .disabled aren't clickable
    $(".nav-tabs a[data-toggle=tab]").on("click", function(e) {
       var token = window.localStorage.getItem("sessionToken");
+      console.log("********.nav tabs app.js**********")
+      console.log(token);
+
+
       if ($(this).hasClass("disabled") && !token) {
          e.preventDefault();
          return false;
@@ -59,6 +69,8 @@ var WorkoutLog = (function($, undefined) {
    var token = window.localStorage.getItem("sessionToken");
    if (token) {
       WorkoutLog.setAuthHeader(token); 
+      console.log("********app.js**********")
+      console.log(token);
    }
 
    // expose this to the other workoutlog modules

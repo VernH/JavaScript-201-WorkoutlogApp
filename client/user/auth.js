@@ -10,6 +10,9 @@ $(function() {
                data: JSON.stringify(user), 
                contentType: "application/json"
             });
+
+     		console.log(data.sessionToken);
+
             signup.done(function(data) {
                if (data.sessionToken) {
                   WorkoutLog.setAuthHeader(data.sessionToken);
