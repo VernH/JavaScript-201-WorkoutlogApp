@@ -1,5 +1,6 @@
-$(function() {
-   $.extend( WorkoutLog, {
+$(function(){
+// $(function() {
+   $.extend(WorkoutLog, {
       signup: function() {
             var username = $("#su_username").val();
             var password = $("#su_password").val();
