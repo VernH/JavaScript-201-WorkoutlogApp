@@ -9,6 +9,9 @@ module.exports = function(sequelize, DataTypes) {
 };
 
 
+
+
+
 /*
 POSTMAN TEST:
 {
