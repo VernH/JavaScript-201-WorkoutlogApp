@@ -10,12 +10,17 @@ router.post('/', function(req, res) {
 			if (user) {
 				bcrypt.compare(req.body.user.password, user.passwordhash, function(err, matches){
 					if (matches) {
+					  
 					   var token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24 });
+						console.log("**************Session.js****************");
+						console.log(token);
 						res.json({
 							user: user,
 							message: "successfully authenticated",
 							sessionToken: token
 						});
+						console.log("**************Session.js****************");
+						console.log(token);
 					}else {
 					res.status(500).send({ error: "failed to authenticate" });
 					}
