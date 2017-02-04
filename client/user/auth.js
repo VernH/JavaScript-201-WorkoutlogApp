@@ -10,20 +10,20 @@ $(function() {
                data: JSON.stringify(user), 
                contentType: "application/json"
             });
-            signup.done(function(data) {
+            signup
+            .done(function(data) {
                if (data.sessionToken) {
                   WorkoutLog.setAuthHeader(data.sessionToken);
                   console.log("You made it!");
                   console.log(data.sessionToken);
-                  
                }
                $("#signup-modal").modal("hide");
                $(".disabled").removeClass("disabled");
-             //  $("#loginout").text("Logout");
-               // go to define tab
+	           //$("#loginout").text("Logout");
+               //go to define tab
                //$('.nav-tabs a[href="#define"]').tab('show');
             })
-            .fail(function() {
+            .fail(function(){
                $("#su_error").text("There was an issue with your username").show();
             });
       },
@@ -40,17 +40,21 @@ $(function() {
    			data: JSON.stringify(user), 
    			contentType: "application/json"
    		});
-   		login.done(function(data) {
+
+   		login
+   		.done(function(data) {
    			if (data.sessionToken) {
-               WorkoutLog.setAuthHeader(data.sessionToken);
-               
+               WorkoutLog.setAuthHeader(data.sessionToken);       
+               console.log(data.sessionToken);
    			}
-   			// TODO: add logic to set user and auth token	
+
    			$("#login-modal").modal("hide");
    			$(".disabled").removeClass("disabled");
    			$("#loginout").text("Logout");
    		})
-   		.fail(function() {
+
+ 
+   		.fail(function(){
    			$("#li_error").text("There was an issue with your username or password").show();
       		});
       },
